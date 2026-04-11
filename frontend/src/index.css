@@ -1,0 +1,390 @@
+/* ============================================================
+ * FILE: index.css
+ * TYPE: Frontend — Global Stylesheet
+ * JOB: Sets the global design system: fonts, colors, resets, and utility classes
+ * INTERACTS WITH: All React components inherit these styles
+ * ============================================================ */
+
+/* Import Inter font — a clean, modern font perfect for academic UIs */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ─────────────────────────────────────────────
+   SECTION 1: CSS CUSTOM PROPERTIES (Design Tokens)
+   WHY: Centralising colors/spacing means one change updates the whole site
+   ───────────────────────────────────────────── */
+:root {
+  /* Brand color palette */
+  --primary: #6c63ff;          /* Main purple — buttons, links, highlights */
+  --primary-dark: #5a52d5;     /* Darker purple — hover states */
+  --primary-light: #ede9ff;    /* Light purple — backgrounds, badges */
+  --secondary: #06b6d4;        /* Cyan accent — resource type badges */
+  --success: #10b981;          /* Green — success messages, fulfilled status */
+  --warning: #f59e0b;          /* Amber — ratings stars */
+  --danger: #ef4444;           /* Red — error messages */
+  --info: #3b82f6;             /* Blue — info badges */
+
+  /* Neutral palette */
+  --bg: #f8f7ff;               /* Page background — slightly tinted white */
+  --surface: #ffffff;          /* Card/panel background */
+  --surface-2: #f3f4f6;        /* Slightly grey surface for input areas */
+  --border: #e5e7eb;           /* Subtle grey border */
+  --border-focus: #6c63ff;     /* Purple border on focused inputs */
+
+  /* Text hierarchy */
+  --text-primary: #111827;     /* Main text — almost black */
+  --text-secondary: #6b7280;   /* Muted text — metadata, captions */
+  --text-light: #9ca3af;       /* Placeholder text */
+
+  /* Spacing scale */
+  --radius: 12px;              /* Border radius for cards */
+  --radius-sm: 8px;            /* Smaller radius for inputs */
+  --radius-pill: 999px;        /* Fully rounded — for badges and pills */
+  --shadow: 0 4px 24px rgba(108, 99, 255, 0.08);  /* Card shadow */
+  --shadow-hover: 0 8px 32px rgba(108, 99, 255, 0.18); /* Hover shadow */
+
+  /* Layout */
+  --max-width: 1200px;
+  --navbar-height: 64px;
+}
+
+/* ─────────────────────────────────────────────
+   SECTION 2: RESET & BASE STYLES
+   WHY: Browsers have inconsistent default margins/paddings — reset to 0
+   ───────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box; /* ensures padding doesn't add to element width */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* smooth scrolling when navigating to anchors */
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased; /* makes text crisper on macOS */
+  min-height: 100vh;
+}
+
+/* Main content wrapper — offset for fixed navbar */
+.main-content {
+  min-height: calc(100vh - var(--navbar-height));
+  padding-top: var(--navbar-height);
+}
+
+/* ─────────────────────────────────────────────
+   SECTION 3: TYPOGRAPHY
+   ───────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+p { color: var(--text-secondary); }
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover { color: var(--primary-dark); }
+
+/* ─────────────────────────────────────────────
+   SECTION 4: LAYOUT CONTAINERS
+   ───────────────────────────────────────────── */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.page-wrapper {
+  padding: 40px 0 80px;
+}
+
+/* ─────────────────────────────────────────────
+   SECTION 5: BUTTONS
+   ───────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.35);
+}
+
+.btn-secondary {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+.btn-outline:hover:not(:disabled) {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-sm {
+  padding: 6px 14px;
+  font-size: 0.8rem;
+}
+
+.btn-lg {
+  padding: 14px 28px;
+  font-size: 1rem;
+  border-radius: var(--radius);
+}
+
+.btn-block {
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: white;
+}
+
+/* ─────────────────────────────────────────────
+   SECTION 6: FORM ELEMENTS
+   ───────────────────────────────────────────── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+  background: var(--surface);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.12);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-light);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ─────────────────────────────────────────────
+   SECTION 7: CARDS
+   ───────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+/* ─────────────────────────────────────────────
+   SECTION 8: BADGES / PILLS
+   ───────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.badge-purple { background: var(--primary-light); color: var(--primary); }
+.badge-cyan   { background: #e0f9ff; color: #0891b2; }
+.badge-green  { background: #d1fae5; color: #059669; }
+.badge-amber  { background: #fef3c7; color: #d97706; }
+.badge-red    { background: #fee2e2; color: #dc2626; }
+.badge-blue   { background: #dbeafe; color: #1d4ed8; }
+
+/* ─────────────────────────────────────────────
+   SECTION 9: ALERTS / MESSAGES
+   ───────────────────────────────────────────── */
+.alert {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alert-success { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+.alert-error   { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+.alert-info    { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
+
+/* ─────────────────────────────────────────────
+   SECTION 10: GRID SYSTEM
+   ───────────────────────────────────────────── */
+.grid {
+  display: grid;
+  gap: 24px;
+}
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .container { padding: 0 16px; }
+}
+
+/* ─────────────────────────────────────────────
+   SECTION 11: LOADING SPINNER
+   ───────────────────────────────────────────── */
+.spinner-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--primary-light);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─────────────────────────────────────────────
+   SECTION 12: MISC UTILITIES
+   ───────────────────────────────────────────── */
+.flex       { display: flex; }
+.flex-col   { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; }
+.text-center { text-align: center; }
+.text-sm { font-size: 0.875rem; }
+.text-xs { font-size: 0.75rem; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.text-muted { color: var(--text-secondary); }
+.text-primary-color { color: var(--primary); }
+.mt-1 { margin-top: 4px; }
+.mt-2 { margin-top: 8px; }
+.mt-3 { margin-top: 12px; }
+.mt-4 { margin-top: 16px; }
+.mb-4 { margin-bottom: 16px; }
+.mb-6 { margin-bottom: 24px; }
+.w-full { width: 100%; }
+
+/* Page section headers */
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.section-subtitle {
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+}
+
+/* Divider */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 24px 0;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+}
+.empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+.empty-state h3 {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}

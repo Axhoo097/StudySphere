@@ -1,0 +1,120 @@
+/* ============================================================
+ * FILE: Requests.css
+ * TYPE: Frontend — Page Stylesheet
+ * JOB: Styles the bulletin board request cards and inline response elements
+ * ============================================================ */
+
+/* Header section containing title and action button */
+.requests-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Card housing the "Create New Request" form */
+.request-form-card {
+  padding: 24px;
+  margin-bottom: 40px;
+  background: var(--surface);
+  border: 2px solid var(--primary-light);
+}
+
+.form-title {
+  margin-bottom: 16px;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Flex layout for the list of requested items */
+.requests-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Individual Request Card */
+.request-card {
+  padding: 20px;
+  background: var(--surface);
+}
+
+/* Dim fulfilled requests slightly so open requests pop out more */
+.request-card.fulfilled {
+  opacity: 0.85;
+  background: var(--surface-2);
+}
+
+/* Header inside the card containing badges and dates */
+.req-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.req-badges {
+  display: flex;
+  gap: 6px;
+}
+
+.req-date {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.req-title {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.req-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.req-author {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Responses block inside the card */
+.req-responses {
+  background: var(--surface-2);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+}
+
+.resp-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.resp-item {
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  color: var(--text-primary);
+}
+.resp-item:last-child {
+  margin-bottom: 0;
+}
+
+/* The inline reply form box */
+.req-reply-form {
+  background: var(--surface-2);
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--border);
+  margin-top: 12px;
+}

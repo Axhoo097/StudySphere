@@ -1,0 +1,99 @@
+/* ============================================================
+ * FILE: Home.css
+ * TYPE: Frontend — Page Stylesheet
+ * JOB: Styles for the Home browsing page: hero, filters, and layout
+ * ============================================================ */
+
+/* ── Hero Section ── */
+.hero {
+  text-align: center;
+  padding: 48px 0 40px;
+}
+
+.hero-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  color: var(--text-primary);
+}
+
+/* Gradient highlighted keyword in title */
+.highlight {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Top Resources ── */
+.top-resources-section {
+  margin-bottom: 12px;
+}
+
+/* ── Filter Bar ── */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+}
+
+/* Search input takes more space */
+.search-input {
+  flex: 2;
+  min-width: 200px;
+}
+
+.filter-input {
+  flex: 1;
+  min-width: 130px;
+}
+
+.filter-select {
+  min-width: 140px;
+  flex: 1;
+}
+
+/* ── Results Header ── */
+.results-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.results-count {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero-title { font-size: 1.8rem; }
+  .filter-bar { flex-direction: column; }
+  .search-input, .filter-input, .filter-select { width: 100%; }
+}

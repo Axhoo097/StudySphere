@@ -1,0 +1,63 @@
+/* ============================================================
+ * FILE: Upload.css
+ * TYPE: Frontend — Page Stylesheet
+ * JOB: Styles the centered upload form card and makes it responsive
+ * ============================================================ */
+
+/* Ensure the wrapper uses flexbox for centering */
+.upload-page {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+/* ── Container for the Form ── */
+.upload-card {
+  max-width: 800px;
+  width: 100%;
+  padding: 40px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.upload-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* ── Form Inputs ── */
+.upload-form {
+  align-items: start; /* prevents fields from unnecessarily stretching vertically */
+}
+
+/* Specifically style the file input to look nicer */
+.file-group {
+  padding: 20px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  text-align: left;
+  transition: border-color 0.3s;
+}
+
+.file-group:hover {
+  border-color: var(--primary);
+}
+
+.file-input {
+  /* remove the typical box-shadow/border for the raw file input */
+  border: none;
+  background: transparent;
+  padding: 10px 0 0 0;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+/* Responsive breakpoint: collapse the grid on smaller screens */
+@media (max-width: 768px) {
+  .upload-card {
+    padding: 24px;
+  }
+}
